@@ -1,0 +1,4 @@
+#thirdparty-provider-container-groundhogg #groundhogg-tag-table table tbody:empty ~ thead,
+#thirdparty-provider-container-groundhogg #groundhogg-tag-table table tbody:not(:empty) ~ tfoot tr:first-child {
+  display: none;
+}
