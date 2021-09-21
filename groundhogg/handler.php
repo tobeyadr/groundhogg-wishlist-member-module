@@ -252,7 +252,6 @@ class Groundhogg_Interface {
 
 		if ( ! is_a_contact( $contact ) ) {
 			$contact = create_contact_from_user( $contact );
-
 		} else {
 			$contact->remove_tag( $remove_tags );
 		}

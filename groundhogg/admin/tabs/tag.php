@@ -39,7 +39,7 @@
 function groundhogg_load_tags_table() {
 	var tmpl = _.template($('script#groundhogg-tag-template').html(), {variable: 'data'});
 	var data = {
-		tags : <?php echo json_encode( $tags ); ?>,
+		tags : <?php echo wp_json_encode( $tags ); ?>,
 		tag_ids : Object.keys( WLM3ThirdPartyIntegration.groundhogg.groundhogg_settings.tag || [] )
 	}
 	$('#groundhogg-tag-table table tbody').empty().append(tmpl(data).trim());

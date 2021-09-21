@@ -3,19 +3,13 @@
 require_once 'admin/init.php';
 
 $groundhogg_settings = isset( $ar_data[ $config['id'] ]['groundhogg_settings'] ) ? $ar_data[ $config['id'] ]['groundhogg_settings'] : array();
-$tags               = array();
+$tags               = [];
 $active_plugins     = wlm_get_active_plugins();
 
 if ( in_array( 'Groundhogg', $active_plugins ) || isset( $active_plugins['groundhogg/groundhogg.php'] ) || is_plugin_active( 'groundhogg/groundhogg.php' ) ) {
-
-
-	$allTags = \Groundhogg\get_db( 'tags' )->query();
-	foreach ( $allTags as $tag ) {
-		$tags[ $tags->tag_id ] = array(
-			'id'    => $tag->tag_id,
-			'title' => $tag->tag_name,
-		);
-	}
+	$tags = array_map( function ( $tag ) {
+		return [ 'id' => $tag->tag_id, 'title' => $tag->tag_name ];
+	}, \Groundhogg\get_db( 'tags' )->query() );
 }
 
 ?>
